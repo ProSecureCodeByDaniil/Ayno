@@ -1,0 +1,141 @@
+/* ---------- Шапка профиля ---------- */
+.profile{display:flex;gap:20px;align-items:center;flex-wrap:wrap;
+  max-width:920px;
+  background:linear-gradient(135deg, rgba(255,232,31,.10), rgba(79,195,247,.06));
+  border:1px solid rgba(255,232,31,.3);border-radius:16px;padding:22px;
+  box-shadow:0 0 30px rgba(255,232,31,.12);position:relative;overflow:hidden;}
+.profile::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 15% 50%, rgba(79,195,247,.18), transparent 60%);
+  pointer-events:none;}
+
+.avatar{width:76px;height:76px;border-radius:50%;object-fit:cover;
+  border:2px solid #ffe81f;
+  box-shadow:0 0 24px rgba(255,232,31,.5);
+  animation:avatarPulse 3s ease-in-out infinite;
+  position:relative;z-index:1;background:#0a0d13;}
+@keyframes avatarPulse{
+  0%,100%{box-shadow:0 0 24px rgba(255,232,31,.5);}
+  50%    {box-shadow:0 0 40px rgba(255,232,31,.9),0 0 60px rgba(79,195,247,.4);}
+}
+
+.profile-info{flex:1;min-width:220px;position:relative;z-index:1;}
+.profile-info .name{font-size:22px;color:#ffe81f;font-weight:900;
+  letter-spacing:1px;text-shadow:0 0 14px rgba(255,232,31,.5);}
+.profile-info .uid{margin-top:6px;font-size:13px;color:#8b93a1;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  word-break:break-all;}
+.profile-info .uid code{color:#4fc3f7;background:#05070c;
+  border:1px solid rgba(79,195,247,.35);padding:3px 8px;border-radius:6px;
+  box-shadow:0 0 12px rgba(79,195,247,.15);}
+.rank-badge{display:inline-block;margin-top:8px;font-size:11px;
+  letter-spacing:2px;text-transform:uppercase;color:#a6ecc3;
+  border:1px solid rgba(166,236,195,.35);padding:3px 10px;border-radius:20px;
+  background:rgba(22,40,31,.6);}
+
+/* ---------- Вертикальное игровое меню ---------- */
+.game-menu{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:24px;
+  max-width:920px;
+}
+
+.menu-item{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:16px 20px 16px 24px;
+  background:rgba(12,16,24,.85);
+  border:1px solid rgba(255,232,31,.22);
+  border-radius:12px;
+  text-decoration:none;
+  color:#e6e8eb;
+  overflow:hidden;
+  transition:background .22s ease, border-color .22s ease,
+             transform .22s ease, box-shadow .22s ease;
+}
+
+/* Левая жёлтая полоска — «подсветка выделенного пункта» */
+.menu-item::before{
+  content:'';
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:4px;
+  background:#ffe81f;
+  transform:scaleY(0);
+  transform-origin:center;
+  transition:transform .25s ease;
+  box-shadow:0 0 12px rgba(255,232,31,.75);
+}
+
+.menu-item:hover{
+  background:rgba(255,232,31,.08);
+  border-color:rgba(255,232,31,.7);
+  transform:translateX(6px);
+  box-shadow:0 8px 28px rgba(255,232,31,.20);
+}
+.menu-item:hover::before{transform:scaleY(1);}
+
+.mi-icon{
+  font-size:26px;
+  flex-shrink:0;
+  filter:drop-shadow(0 0 8px rgba(255,232,31,.45));
+  transition:transform .22s ease, filter .22s ease;
+}
+.menu-item:hover .mi-icon{
+  transform:scale(1.12);
+  filter:drop-shadow(0 0 12px rgba(255,232,31,.85));
+}
+
+.mi-text{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0;}
+.mi-title{
+  font-size:16px;
+  font-weight:800;
+  letter-spacing:1px;
+  color:#ffe81f;
+  text-shadow:0 0 8px rgba(255,232,31,.35);
+  transition:text-shadow .22s ease;
+}
+.menu-item:hover .mi-title{text-shadow:0 0 14px rgba(255,232,31,.75);}
+
+.mi-sub{
+  font-size:12px;
+  color:#8b93a1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.mi-arrow{
+  color:#4fc3f7;
+  font-size:20px;
+  flex-shrink:0;
+  transition:transform .22s ease, color .22s ease;
+}
+.menu-item:hover .mi-arrow{
+  color:#ffe81f;
+  transform:translateX(5px);
+}
+
+/* Опасный пункт — Выход */
+.menu-item.danger .mi-title{color:#ffb3c1;text-shadow:0 0 8px rgba(255,80,110,.35);}
+.menu-item.danger::before{background:#ff506e;box-shadow:0 0 12px rgba(255,80,110,.75);}
+.menu-item.danger .mi-arrow{color:#ffb3c1;}
+
+.menu-item.danger:hover{
+  background:rgba(255,80,110,.08);
+  border-color:rgba(255,80,110,.55);
+  box-shadow:0 8px 28px rgba(255,80,110,.18);
+}
+.menu-item.danger:hover .mi-title{text-shadow:0 0 14px rgba(255,80,110,.75);}
+.menu-item.danger:hover .mi-arrow{color:#ff506e;}
+
+/* ---------- Анимация появления ---------- */
+.fade-in{animation:fadeIn .5s ease both;}
+.fade-in.d1{animation-delay:.05s;}
+.fade-in.d2{animation-delay:.15s;}
+.fade-in.d3{animation-delay:.25s;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}
+                  to{opacity:1;transform:translateY(0);}}

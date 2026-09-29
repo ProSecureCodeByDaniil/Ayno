@@ -1,0 +1,24 @@
+version: "2.4"
+
+services:
+  txtcloud:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    pids_limit: 4096
+    mem_limit: 4g
+    cpus: 4.0
+    ports:
+      - "5000:5000"
+    environment:
+      # Пустая строка потому что app.py сам сгенерит случайный secret_key
+      - SECRET_KEY=${SECRET_KEY:-}
+      - TXTCLOUD_DB=/data/users.db
+    volumes:
+      - txtcloud_data:/data
+      - txtcloud_storage:/app/storage
+
+volumes:
+  txtcloud_data:
+  txtcloud_storage:
