@@ -1,0 +1,25 @@
+.register-layout{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;}
+
+.jabba-portrait{flex:0 0 220px;text-align:center;}
+.jabba-portrait img{max-width:100%;
+  filter:drop-shadow(0 0 24px rgba(255,232,31,.5));}
+.jabba-portrait p{margin-top:8px;}
+
+.jabba-form{flex:1;min-width:280px;}
+
+.jabba-console{background:#05070c;border-color:#2a3140;
+  font-family:monospace;padding:22px;min-height:280px;}
+
+.jabba-text{color:#a6ecc3;white-space:pre-wrap;margin-bottom:16px;
+  line-height:1.6;font-size:14px;}
+
+.jabba-field{width:100%;padding:10px;background:#0a0d13;
+  border:1px solid #2b323f;color:#e6e8eb;border-radius:8px;
+  font-family:monospace;font-size:14px;}
+
+#jabbaContinue{margin-top:10px;margin-bottom:6px;}
+
+#jabbaInput{margin-top:6px;}
+
+.jabba-btn{margin-top:10px;}
+.jabba-result{text-align:center;}

